@@ -1,9 +1,9 @@
 # awa-documentation
 
-## API
+## [API](API.md)
 
 Contains plan for the backend API
 
-## Design
+## [Design](Design.md)
 
 General project design
