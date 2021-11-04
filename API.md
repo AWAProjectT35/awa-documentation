@@ -1,8 +1,6 @@
-# Design Document
+# API
 
-## API
-
-### Without User Login
+## Without User Login
 
 Return all restaurants
 
