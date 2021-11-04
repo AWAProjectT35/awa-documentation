@@ -19,7 +19,3 @@ Create a new user
 Log in user with `username`
 
 `POST /users/{username}`
-
-## Project Wide Values
-
-- Line lenght `100`
