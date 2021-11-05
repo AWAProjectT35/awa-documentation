@@ -29,7 +29,7 @@ Get shopping cart contents
 
 Add item to cart
 
-`POST /cart/add/{itemId}`
+`POST /cart/{itemId}`
 
 Buy cart contents
 
