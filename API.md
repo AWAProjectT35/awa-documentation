@@ -41,7 +41,7 @@ Buy cart contents
 
 View all orders by user
 
-`GET /orders
+`GET /orders`
 
 View order status
 
