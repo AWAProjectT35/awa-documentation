@@ -46,7 +46,7 @@
 > }
 > ```
 
-`POST /public/users/login/{username}`
+`POST /public/users/login`
 
 
 ## Customer
