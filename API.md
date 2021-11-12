@@ -20,13 +20,15 @@
 
 #### Create user account
 
-> Creates: Customer and Manager accounts
+> - Customer account
+> - Manager account
 
 `POST /public/users`
 
 #### Login with user account
 
-> Logs in: Customer and Manager accounts
+> - Customer account
+> - Manager account
 
 `POST /public/users/login/{username}`
 
