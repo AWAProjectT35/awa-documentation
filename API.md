@@ -23,11 +23,13 @@
 > - Customer account
 > - Manager account
 
+> ```
 > {
 >     username: "Jesse",
 >     name: "jippii",
 >     address: "Kuusitie 6",
 > }
+> ```
 
 `POST /public/users`
 
@@ -36,10 +38,12 @@
 > - Customer account
 > - Manager account
 
+> ```
 > {
 >     username: "jippii"
 >     passwordHash: "32lökfjaweoi"
 > }
+> ```
 
 `POST /public/users/login/{username}`
 
@@ -50,9 +54,11 @@
 
 #### Add products from a restaurant menu to shopping cart
 
+> ```
 > {
 >     productId: 12345
 > }
+> ```
 
 `POST /customer/cart/{productId}`
 
@@ -68,6 +74,7 @@
 > - Make payment with a fictional payment system
 >   - **How to make sure customer has payed?**
 
+> ```
 > {
 >     restaurantName: "Bandidos",
 >     products:
@@ -77,6 +84,7 @@
 >             34567
 >         ]
 > }
+> ```
 
 `POST /customer/cart/buy`
 
@@ -94,10 +102,12 @@
 
 #### Confirm delivered order
 
+> ```
 > {
 >     orderId: 98765,
 >     status: "Delivered"
 > }
+> ```
 
 `POST /customer/orders/confirm`
 
@@ -110,6 +120,7 @@
 
 > Restaurant info
 >
+> ```
 > {
 >     restaurantName: "Bandidos",
 >     address: "Puistokatu 31",
@@ -118,6 +129,7 @@
 >     type: "Casual",
 >     priceLevel: "€€"
 > }
+> ```
 
 `POST /manager/restaurants`
 
@@ -127,11 +139,13 @@
 
 > List of product ids
 >
+> ```
 > [
 >     12345,
 >     23456,
 >     34567
 > ]
+> ```
 
 `POST /manager/restaurants/{restaurantName}`
 
@@ -139,6 +153,7 @@
 
 > Product data
 >
+> ```
 > {
 >     name: "Garlic Bread",
 >     description: "Lorem ipsum dolor sit amet",
@@ -148,6 +163,7 @@
 > }
 >
 > if category doesn't exist backend creates it
+> ```
 
 `POST /manager/restaurants/{restaurantName}/products`
 
@@ -159,9 +175,11 @@
 
 #### Change order status with Estimated Time of Completion
 
+> ```
 > {
 >     status: "Preparing"
 > }
+> ```
 
 > - Received
 > - Preparing
