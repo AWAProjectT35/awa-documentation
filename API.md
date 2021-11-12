@@ -1,48 +1,131 @@
 # API
 
-## Without User Login
+## Public
 
-Return all restaurants
+### Restaurants
 
-`GET /restaurants`
+#### Browse restaurants
 
-Return restaurant that matches `id`
+`GET /public/restaurants`
 
-`GET /restaurants/{restaurantId}`
+#### Search for restaurants
 
-Create a new user
+`GET /public/restaurants/{restaurantName}`
 
-`POST /users`
+#### Browse restaurant menus
 
-Log in user with `username`
+`GET /public/restaurants/{restaurantName}/menu`
 
-`POST /users/login/{username}`
+### Users
+
+#### Create user account
+
+> Creates:
+>
+> Customer and Manager accounts
+
+`POST /public/users`
+
+#### Login with user account
+
+> Logs in:
+>
+> Customer and Manager accounts
+
+`POST /public/users/login/{username}`
 
 
-## User logged in
+## Customer
 
 ### Shopping cart
 
-Get shopping cart contents
+#### Add products from a restaurant menu to shopping cart
 
-`GET /cart`
+`POST /customer/cart/{productId}`
 
-Add item to cart
+#### Show shopping cart contents
 
-`POST /cart/{itemId}`
+> Shows also:
+>
+> Show final costs
 
-Buy cart contents
+`GET /customer/cart`
 
-`POST /cart/buy`
+#### Buy cart contents
+
+> Sends info for:
+>
+> Select Delivery location
+> Make payment with a fictional payment system
+
+`POST /customer/cart/buy`
 
 ### Orders
 
-- **Confirm delivered order ?**
+#### View order history
 
-View all orders by user
+`GET /customer/orders`
 
-`GET /orders`
+#### View an order
 
-View order status
+> Shows:
+>
+> View order status
 
-`GET /orders/{orderId}`
+`GET /customer/orders/{orderId}`
+
+#### Confirm delivered order
+
+`POST /customer/orders/confirm`
+
+
+## Manager
+
+### Restaurants
+
+#### Create a restaurant to the system with basic information
+
+> - Name
+> - Address
+> - Operating hours
+> - Image
+> - Restaurant type
+>   - Buffet, Fast food, Fast casual, Casual dining, Fine dining
+> - Price level
+>   - €, €€, €€€, €€€€
+
+`POST /manager/restaurants`
+
+### Menu
+
+#### Create restaurants menu
+
+> Sends: List of products
+
+`POST /manager/restaurants/{restaurantName}`
+
+#### Create product to category
+
+> Sends: Name, Description, Price, Image
+>
+> if category doesn't exist backend creates it
+
+`POST /manager/restaurants/{restaurantName}/products`
+
+#### Receive order
+
+`GET /manager/restaurants/{restaurantName}/ordres/new`
+
+#### Change order status with Estimated Time of Completion
+
+> - Received
+> - Preparing
+> - Ready for delivery
+> - Delivering
+> - Delivered
+
+`POST /manager/restaurants/{restaurantName}/orders/{orderId}`
+
+#### View order history
+
+`GET /manager/restaurants/{restaurantName}/orders`
