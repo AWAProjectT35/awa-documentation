@@ -25,9 +25,10 @@
 
 > ```
 > {
->     username: "Jesse",
->     name: "jippii",
+>     username: "jaska_jokunen",
 >     address: "Kuusitie 6",
+>     manager: False,
+>     passwordHash: "32lökfjaweoi"
 > }
 > ```
 
@@ -40,7 +41,7 @@
 
 > ```
 > {
->     username: "jippii"
+>     username: "jaska_jokunen"
 >     passwordHash: "32lökfjaweoi"
 > }
 > ```
