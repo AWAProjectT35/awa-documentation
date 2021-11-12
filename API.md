@@ -1,8 +1,12 @@
 # API
 
 - GET /public/restaurants
-- GET /public/restaurants/{restaurantName}
-- GET /public/restaurants/{restaurantName}/menu
+- GET /public/restaurants/
+  - ?name={restaurantName}
+  - ?address={address}
+  - ?type={type}
+  - ?price={price}
+- GET /public/restaurants/{restaurantId}/menu
 - POST /public/users
 - POST /public/users/login
 - POST /customer/cart/{productId}
@@ -12,11 +16,11 @@
 - GET /customer/orders/{orderId}
 - POST /customer/orders/confirm
 - POST /manager/restaurants
-- POST /manager/restaurants/{restaurantName}/menu
-- POST /manager/restaurants/{restaurantName}/product
-- GET /manager/restaurants/{restaurantName}/ordres/new
-- POST /manager/restaurants/{restaurantName}/orders/{orderId}
-- GET /manager/restaurants/{restaurantName}/orders
+- POST /manager/restaurants/{restaurantId}/menu
+- POST /manager/restaurants/{restaurantId}/product
+- GET /manager/restaurants/{restaurantId}/ordres/new
+- POST /manager/restaurants/{restaurantId}/orders/{orderId}
+- GET /manager/restaurants/{restaurantId}/orders
 
 ## Public
 
@@ -28,11 +32,17 @@
 
 #### Search for restaurants
 
-`GET /public/restaurants/{restaurantName}`
+`GET /public/restaurants/?name={restaurantName}`
+
+`GET /public/restaurants/?address={address}`
+
+`GET /public/restaurants/?type={type}`
+
+`GET /public/restaurants/?price={price}`
 
 #### Browse restaurant menus
 
-`GET /public/restaurants/{restaurantName}/menu`
+`GET /public/restaurants/{restaurantId}/menu`
 
 ### Users
 
@@ -46,7 +56,7 @@
 >     username: "jaska_jokunen",
 >     address: "Kuusitie 6",
 >     manager: False,
->     passwordHash: "32lökfjaweoi"
+>     password: "32lökfjaweoi"
 > }
 > ```
 
@@ -60,7 +70,7 @@
 > ```
 > {
 >     username: "jaska_jokunen"
->     passwordHash: "32lökfjaweoi"
+>     password: "32lökfjaweoi"
 > }
 > ```
 
@@ -95,7 +105,7 @@
 
 > ```
 > {
->     restaurantName: "Bandidos",
+>     restaurantId: 007,
 >     products:
 >         [
 >             12345,
@@ -166,7 +176,7 @@
 > ]
 > ```
 
-`POST /manager/restaurants/{restaurantName}/menu`
+`POST /manager/restaurants/{restaurantId}/menu`
 
 ### Product
 
@@ -186,7 +196,7 @@
 > if category doesn't exist backend creates it
 > ```
 
-`POST /manager/restaurants/{restaurantName}/product`
+`POST /manager/restaurants/{restaurantId}/product`
 
 ## Orders
 
@@ -194,7 +204,7 @@
 
 > Shows orders that have `Received` status
 
-`GET /manager/restaurants/{restaurantName}/ordres/new`
+`GET /manager/restaurants/{restaurantId}/ordres/new`
 
 #### Change order status with Estimated Time of Completion
 
@@ -210,8 +220,8 @@
 > - Delivering
 > - Delivered
 
-`POST /manager/restaurants/{restaurantName}/orders/{orderId}`
+`POST /manager/restaurants/{restaurantId}/orders/{orderId}`
 
 #### View order history
 
-`GET /manager/restaurants/{restaurantName}/orders`
+`GET /manager/restaurants/{restaurantId}/orders`
