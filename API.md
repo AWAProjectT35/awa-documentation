@@ -20,17 +20,13 @@
 
 #### Create user account
 
-> Creates:
->
-> Customer and Manager accounts
+> Creates: Customer and Manager accounts
 
 `POST /public/users`
 
 #### Login with user account
 
-> Logs in:
->
-> Customer and Manager accounts
+> Logs in: Customer and Manager accounts
 
 `POST /public/users/login/{username}`
 
@@ -45,18 +41,14 @@
 
 #### Show shopping cart contents
 
-> Shows also:
->
-> Show final costs
+> Shows also: Show final costs
 
 `GET /customer/cart`
 
 #### Buy cart contents
 
-> Sends info for:
->
-> Select Delivery location
-> Make payment with a fictional payment system
+> - Select Delivery location
+> - Make payment with a fictional payment system
 
 `POST /customer/cart/buy`
 
@@ -68,8 +60,6 @@
 
 #### View an order
 
-> Shows:
->
 > View order status
 
 `GET /customer/orders/{orderId}`
@@ -106,7 +96,10 @@
 
 #### Create product to category
 
-> Sends: Name, Description, Price, Image
+> - Name
+> - Description
+> - Price
+> - Image
 >
 > if category doesn't exist backend creates it
 
@@ -115,6 +108,8 @@
 #### Receive order
 
 `GET /manager/restaurants/{restaurantName}/ordres/new`
+
+> Shows orders that have `Received` status
 
 #### Change order status with Estimated Time of Completion
 
