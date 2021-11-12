@@ -65,7 +65,7 @@ create table products (
     restaurant_name VARCHAR(50) REFERENCES restaurant (restaurant_name),
     name VARCHAR(50) NOT NULL,
     description VARCHAR(150),
-    price FLOAT8 NOT NULL,
+    price FLOAT(8) NOT NULL,
     image VARCHAR(100),
     categories VARCHAR(100)
 );
@@ -75,13 +75,13 @@ create table orders (
     user_name VARCHAR(20) REFERENCES users (user_name),
     status VARCHAR(20) NOT NULL,
     order_date DATE NOT NULL,
-    total FLOAT8 NOT NULL
+    total FLOAT(8) NOT NULL
 );
 create table orders_products (
     order_id VARCHAR(50) REFERENCES orders (order_id),
     product_id VARCHAR(50) REFERENCES products (product_id),
     amount INT NOT NULL,
-    unit_price FLOAT8 NOT NULL,
+    unit_price FLOAT(8) NOT NULL,
     PRIMARY KEY(order_id, product_id)
 )
 ```
@@ -145,7 +145,7 @@ INSERT INTO users values (
 
 ```sql
 INSERT INTO restaurants VALUES (
-    'restaurant_name
+    'restaurant_name',
     'manager_name',
     'address',
     'price_level',
