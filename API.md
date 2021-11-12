@@ -1,5 +1,23 @@
 # API
 
+- GET /public/restaurants
+- GET /public/restaurants/{restaurantName}
+- GET /public/restaurants/{restaurantName}/menu
+- POST /public/users
+- POST /public/users/login
+- POST /customer/cart/{productId}
+- GET /customer/cart
+- POST /customer/cart/buy
+- GET /customer/orders
+- GET /customer/orders/{orderId}
+- POST /customer/orders/confirm
+- POST /manager/restaurants
+- POST /manager/restaurants/{restaurantName}/menu
+- POST /manager/restaurants/{restaurantName}/product
+- GET /manager/restaurants/{restaurantName}/ordres/new
+- POST /manager/restaurants/{restaurantName}/orders/{orderId}
+- GET /manager/restaurants/{restaurantName}/orders
+
 ## Public
 
 ### Restaurants
@@ -148,7 +166,9 @@
 > ]
 > ```
 
-`POST /manager/restaurants/{restaurantName}`
+`POST /manager/restaurants/{restaurantName}/menu`
+
+### Product
 
 #### Create product to category
 
@@ -166,7 +186,9 @@
 > if category doesn't exist backend creates it
 > ```
 
-`POST /manager/restaurants/{restaurantName}/products`
+`POST /manager/restaurants/{restaurantName}/product`
+
+## Orders
 
 #### Receive order
 
