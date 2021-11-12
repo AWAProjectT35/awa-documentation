@@ -41,7 +41,7 @@
 
 #### Show shopping cart contents
 
-> Shows also: Show final costs
+> - Show final costs
 
 `GET /customer/cart`
 
@@ -65,6 +65,8 @@
 `GET /customer/orders/{orderId}`
 
 #### Confirm delivered order
+
+> - Order status `Delivered`
 
 `POST /customer/orders/confirm`
 
@@ -90,7 +92,7 @@
 
 #### Create restaurants menu
 
-> Sends: List of products
+> - Sends list of products
 
 `POST /manager/restaurants/{restaurantName}`
 
@@ -107,9 +109,9 @@
 
 #### Receive order
 
-`GET /manager/restaurants/{restaurantName}/ordres/new`
-
 > Shows orders that have `Received` status
+
+`GET /manager/restaurants/{restaurantName}/ordres/new`
 
 #### Change order status with Estimated Time of Completion
 
