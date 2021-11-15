@@ -80,3 +80,5 @@ branch.
 ##### Merge pull request
 
 If everything is now in order go ahead and click `Merge pull request`.
+
+You can delete the merged `new-branch-name` now.
