@@ -176,11 +176,11 @@ INSERT INTO products VALUES (
 
 ```sql
 INSERT INTO orders VALUES (
-    'product_id',
+    'order_id',
     'restaurant_id',
     'user_name',
-    'ordered',
-    'datetoday',
+    'status',
+    'date',
     'total'
 );
 ```
@@ -190,7 +190,7 @@ INSERT INTO orders_products VALUES (
     'order_id',
     'product_id',
     'amount',
-    'unit_price'
+    'product_price'
 )
 ```
 
