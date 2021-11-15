@@ -47,18 +47,31 @@ branch it will lead into git merges.
 
 ##### Make pull request
 
+![](Open_Pull_Request.png)
+
 1. Open your branch in Github
 2. Click **Contribute**
 3. Click **Open Pull Request**
-4. Assign Pull Request to the branch owner or to whom ever you choose.
-5. Add comments from below if you want.
+
+![](Choose_Correct_Branch.png)
+
+**CHECK THAT YOU ARE MERGING INTO CORRECT BRANCH BEFORE YOU CREATE THE REQUEST**
+
+![](Assign_Pull_Request.png)
+
+1. Assign Pull Request to the branch owner or to whom ever you choose.
+2. Add comments from below if you want.
 
 
 ### Handle Pull Request
 
 If you receive a pull request.
 
+![](Check_Pull_Requests.png)
+
 ##### Read the comments and the commits
+
+![](Open_Commits.png)
 
 Commits can be opened in the web page or with git commands.
 
@@ -79,6 +92,6 @@ branch.
 
 ##### Merge pull request
 
-If everything is now in order go ahead and click `Merge pull request`.
+If everything is now in order go ahead and click `Merge pull request`. And the the next confirmation.
 
-You can delete the merged `new-branch-name` now.
+**Before you close the page** you can delete the merged `new-branch-name` now with the `Delete` button that opened up to the right side where the `Merge pull request` used to be at.
