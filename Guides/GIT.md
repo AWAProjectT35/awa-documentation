@@ -2,7 +2,7 @@
 
 ## Git Pull Request
 
-##### Be in the branch you want to change
+##### Go into the branch you want to change
 
 `git checkout branch-you-want-to-change`
 
@@ -12,9 +12,34 @@
 
 Do your changes in this branch.
 
-##### Push the branch to upstream
+##### Commit your changes
 
-`git push origin new-branch-name`
+This adds all changes files into commit.
+
+`git add -A`
+
+This will make a commit of the changes.
+
+`git commit -m "message what the commit does"`
+
+> You can use `git status` and `git diff` or `git diff path/to/file` if you don't remember what you
+have changed.
+
+> Files can be added and committed one by one:
+>
+> `git add path/to/file`
+> `git commit -m "what does this commit do"`
+>
+> `git add first/file/to/commit`
+> `git add second/file/to/commit`
+> `git commit -m "what does this change"`
+
+##### Push the new branch to upstream
+
+> `git status` is a good idea to check before pushing. If upstream happens to be ahead of your
+branch it will lead into git merges.
+
+`git push --set-upstream origin new-branch-name`
 
 ##### Make pull request
 
