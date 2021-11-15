@@ -14,22 +14,22 @@
 
 | product_id (pk) | restaurant_name (fk) | name         | description | price | image | categories   |
 | --------------- | -------------------- | ------------ | ----------- | ----- | ----- | ------------ |
-| 3456789feh332   | Even Better Burgers  | Cheeseburger | very cheesy | 2.50  | ???   | burgers      |
-| ertz5678tzu45   | Best Burgers         | Chicken King | chrispyyy   | 4.20  | ???   | cheesy,cheap |
+| 3456789feh332   | Even Better Burgers  | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
+| ertz5678tzu45   | Best Burgers         | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
 
 ### restaurants 
 
-| restaurant_name (pk) | manager_name (fk) | address  | operating_hours | price_level | image | type      |
-| -------------------- | ----------------- | -------  | --------------- | ----------- | ----- | --------- |
-| Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00 - 22:00    | $$          | ???   | dining in |
-| Best Burgers         | Steven King       | Helsinki | 9:00 - 20:00    | $           | ???   | fastfood  |
+|restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image | type      |
+| ---------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ----- | --------- |
+| 7728c4vz43s927   | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | ???   | dining in |
+| 77s4399qwr2927   | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | ???   | fastfood  |
 
 ### orders
 
-| order_id (pk) | restaurant_name (fk)| user_name (fk) | status    | order_date | total       |
-| ------------- | --------------------| -------------- | ------    | ---------- | ----------- |
-| 31151         | Even Better Burgers | Nina Fisher    | delivered | 2021.11.05 | 27.20       |
-| 11239         | Best Burgers        | Anna Greta     | preparing | 2021.10.22 | 16.50       |
+| order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       |
+| ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- |
+| 31151         | 7728c4vz43s927     | Nina Fisher    | delivered    | 2021.11.05 | 27.20       |
+| 11239         | 77s4399qwr2927     | Anna Greta     | preparing    | 2021.10.22 | 16.50       |
 
 ### orders_products
 
@@ -52,36 +52,38 @@ create table users (
     password_hash VARCHAR(50) NOT NULL,
 );
 create table restaurants (
-    restaurant_name VARCHAR(50) NOT NULL PRIMARY KEY,
+    restaurant_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    restaurant_name VARCHAR(50) NOT NULL,
     manager_name VARCHAR(20) REFERENCES users (user_name),
     address VARCHAR(50) NOT NULL,
-    operating_hours VARCHAR(20) NOT NULL,
-    price_level VARCHAR(3) NOT NULL,
+    opens VARCHAR(5) NOT NULL,
+    closes VARCHAR(5) NOT NULL,
+    price_level SMALLINT NOT NULL,
     type VARCHAR(20) NOT NULL,
     image VARCHAR(100) NOT NULL,
 );
 create table products (
     product_id VARCHAR(50) NOT NULL PRIMARY KEY,
-    restaurant_name VARCHAR(50) REFERENCES restaurant (restaurant_name),
+    restaurant_id VARCHAR(50) REFERENCES restaurant (restaurant_id),
     name VARCHAR(50) NOT NULL,
     description VARCHAR(150),
-    price FLOAT8 NOT NULL,
+    price NUMERIC NOT NULL,
     image VARCHAR(100),
     categories VARCHAR(100)
 );
 create table orders (
     order_id VARCHAR(50) NOT NULL PRIMARY KEY,
-    restaurant_name VARCHAR(50) REFERENCES restaurants (restaurant_name),
+    restaurant_id VARCHAR(50) REFERENCES restaurants (restaurant_id),
     user_name VARCHAR(20) REFERENCES users (user_name),
-    status VARCHAR(20) NOT NULL,
+    order_status VARCHAR(20) NOT NULL,
     order_date DATE NOT NULL,
-    total FLOAT8 NOT NULL
+    total NUMERIC NOT NULL
 );
 create table orders_products (
     order_id VARCHAR(50) REFERENCES orders (order_id),
     product_id VARCHAR(50) REFERENCES products (product_id),
     amount INT NOT NULL,
-    unit_price FLOAT8 NOT NULL,
+    unit_price NUMERIC NOT NULL,
     PRIMARY KEY(order_id, product_id)
 )
 ```
@@ -96,13 +98,13 @@ SELECT * FROM restaurants;
 
 ```sql
 SELECT * FROM products 
-WHERE restaurant_name = '?';
+WHERE restaurant_id = '?';
 ```
 ### Search restaurants
 
 ```sql
 SELECT * FROM products 
-WHERE restaurant_name LIKE '?'
+WHERE restaurant_id LIKE '?'
 AND address LIKE '?'
 AND type LIKE '?'
 AND price_level LIKE '?';
@@ -126,7 +128,7 @@ JOIN orders o ON o.order_id = op.order_id;
 ### Get order status
 
 ```sql
-SELECT status FROM orders 
+SELECT order_status FROM orders 
 WHERE order_id = '?';
 ```
 ### Insert user or manager
@@ -145,11 +147,12 @@ INSERT INTO users values (
 
 ```sql
 INSERT INTO restaurants VALUES (
-    'restaurant_name
+    'restaurant_name',
     'manager_name',
     'address',
     'price_level',
-    'operating_hours',
+    'opens',
+    'closes',
     'image',
     'type'
 );
@@ -160,7 +163,7 @@ INSERT INTO restaurants VALUES (
 ```sql
 INSERT INTO products VALUES (
     'product_id',
-    'restaurant_name',
+    'restaurant_id',
     'name',
     'description',
     'price',
@@ -174,7 +177,7 @@ INSERT INTO products VALUES (
 ```sql
 INSERT INTO orders VALUES (
     'product_id',
-    'restaurant_name',
+    'restaurant_id',
     'user_name',
     'ordered',
     'datetoday',
@@ -194,6 +197,6 @@ INSERT INTO orders_products VALUES (
 ### Update order status
 
 ```sql
-UPDATE orders SET status = '?'
+UPDATE orders SET order_status = '?'
 WHERE order_id = '?'
 ```
