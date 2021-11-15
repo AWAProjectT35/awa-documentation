@@ -44,4 +44,5 @@ branch it will lead into git merges.
 ##### Make pull request
 
 1. Open your branch in Github
-2. The green button in the right side should say **Create Pull Request**
+2. Click **Contribute**
+3. Click **Open Pull Request**
