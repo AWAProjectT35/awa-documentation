@@ -2,6 +2,10 @@
 
 ## Git Pull Request
 
+### Make Pull Request
+
+If you want to make a pull request.
+
 ##### Go into the branch you want to change
 
 `git checkout branch-you-want-to-change`
@@ -46,3 +50,33 @@ branch it will lead into git merges.
 1. Open your branch in Github
 2. Click **Contribute**
 3. Click **Open Pull Request**
+4. Assign Pull Request to the branch owner or to whom ever you choose.
+5. Add comments from below if you want.
+
+
+### Handle Pull Request
+
+If you receive a pull request.
+
+##### Read the comments and the commits
+
+Commits can be opened in the web page or with git commands.
+
+`git checkout new-branch-name`
+
+##### Make your own changes
+
+If the Pull Request requires some changes before it can be accepted you can write them in this same
+branch.
+
+##### Commit and push your own changes
+
+`git add -A`
+
+`git commit -m "needed some changes"`
+
+`git push`
+
+##### Merge pull request
+
+If everything is now in order go ahead and click `Merge pull request`.
