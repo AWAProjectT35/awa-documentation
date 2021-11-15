@@ -77,6 +77,10 @@ Commits can be opened in the web page or with git commands.
 
 `git checkout new-branch-name`
 
+![](Side_By_Side.png)
+
+You might like to see the old and new code side by side.
+
 ##### Make your own changes
 
 If the Pull Request requires some changes before it can be accepted you can write them in this same
