@@ -12,7 +12,7 @@
 
 ### products
 
-| product_id (pk) | restaurant_name (fk) | name         | description | price | image | categories   |
+| product_id (pk) | restaurant_name (fk) | product_name | description | price | image | categories   |
 | --------------- | -------------------- | ------------ | ----------- | ----- | ----- | ------------ |
 | 3456789feh332   | Even Better Burgers  | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
 | ertz5678tzu45   | Best Burgers         | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
@@ -85,7 +85,7 @@ create table orders_products (
     amount SMALLINT NOT NULL,
     unit_price NUMERIC NOT NULL,
     PRIMARY KEY(order_id, product_id)
-)
+);
 ```
 
 ### Get restaurants 
@@ -110,7 +110,7 @@ SELECT * FROM restaurants
 WHERE restaurant_id LIKE '?'
 AND address LIKE '?'
 AND type LIKE '?'
-AND price_level LIKE '?'
+AND price_level LIKE '?';
 ```
 > returns all columns from `restaurants` table filtered for multiple parameters.
 >
@@ -161,6 +161,7 @@ INSERT INTO users values (
 );
 ```
 
+[Example](./sql/insert-users.sql)
 
 ### Insert restaurant
 
