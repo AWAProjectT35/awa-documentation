@@ -1,28 +1,5 @@
 # API
 
-- GET /public/restaurants
-- GET /public/restaurants/
-  - ?id={restaurantId}
-  - ?name={restaurantName}
-  - ?address={address}
-  - ?type={type}
-  - ?price={price}
-- GET /public/restaurants/{restaurantId}/menu
-- POST /public/users
-- POST /public/users/login
-- POST /customer/cart/{productId}
-- GET /customer/cart
-- POST /customer/cart/buy
-- GET /customer/orders
-- GET /customer/orders/{orderId}
-- POST /customer/orders/confirm
-- POST /manager/restaurants
-- POST /manager/restaurants/{restaurantId}/menu
-- POST /manager/restaurants/{restaurantId}/product
-- GET /manager/restaurants/{restaurantId}/ordres/new
-- POST /manager/restaurants/{restaurantId}/orders/{orderId}
-- GET /manager/restaurants/{restaurantId}/orders
-
 ## Public
 
 ### Restaurants
@@ -92,7 +69,7 @@
 }
 ```
 
-`POST /customer/cart/{productId}`
+`POST /customer/cart`
 
 #### Show shopping cart contents
 
@@ -103,19 +80,16 @@
 #### Buy cart contents
 
 - Select Delivery location
+- Customer can buy only from one restaurant at time
 - Make payment with a fictional payment system
   - **How to make sure customer has payed?**
 
 ```
-{
-    restaurantId: 007,
-    products:
-        [
-            12345,
-            23456,
-            34567
-        ]
-}
+[
+    12345,
+    23456,
+    34567
+]
 ```
 
 `POST /customer/cart/buy`
@@ -163,26 +137,16 @@
 
 `POST /manager/restaurants`
 
-### Menu
-
-#### Create restaurants menu
-
-```
-[
-    12345,
-    23456,
-    34567
-]
-```
-
-`POST /manager/restaurants/{restaurantId}/menu`
-
 ### Product
 
-#### Create product to category
+#### Create product
+
+> Create restaurants menu
+> Create product to category
 
 ```
 {
+    restaurantId: 12345,
     name: "Garlic Bread",
     description: "Lorem ipsum dolor sit amet",
     price: 4,
@@ -193,7 +157,7 @@
 
 > if category doesn't exist backend creates it
 
-`POST /manager/restaurants/{restaurantId}/product`
+`POST /manager/restaurants/product`
 
 ## Orders
 
@@ -207,6 +171,7 @@
 
 ```
 {
+    orderId: 12345,
     status: 1
 }
 ```
@@ -217,7 +182,7 @@
 > - 3: Delivering
 > - 4: Delivered
 
-`POST /manager/restaurants/{restaurantId}/orders/{orderId}`
+`POST /manager/restaurants/orders`
 
 #### View order history
 
