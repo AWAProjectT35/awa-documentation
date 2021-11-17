@@ -19,10 +19,10 @@
 
 ### restaurants 
 
-|restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image | type      |
-| ---------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ----- | --------- |
-| 7728c4vz43s927   | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | ???   | dining in |
-| 77s4399qwr2927   | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | ???   | fastfood  |
+| restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image   | type      |
+| ----------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ------- | --------- |
+| 7728c4vz43s927    | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | /url1   | dining in |
+| 77s4399qwr2927    | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | /url2   | fastfood  |
 
 ### orders
 
