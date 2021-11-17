@@ -12,31 +12,31 @@
 
 ### products
 
-| product_id (pk) | restaurant_name (fk) | name         | description | price | image | categories   |
-| --------------- | -------------------- | ------------ | ----------- | ----- | ----- | ------------ |
-| 3456789feh332   | Even Better Burgers  | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
-| ertz5678tzu45   | Best Burgers         | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
+| product_id (pk) | restaurant_id (fk) | name         | description | price | image | categories   |
+| --------------- | ------------------ | ------------ | ----------- | ----- | ----- | ------------ |
+| 11583           | 43956              | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
+| 59832           | 78931              | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
 
 ### restaurants 
 
-|restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image | type      |
-| ---------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ----- | --------- |
-| 7728c4vz43s927   | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | ???   | dining in |
-| 77s4399qwr2927   | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | ???   | fastfood  |
+| restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image   | type      |
+| ----------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ------- | --------- |
+| 43956             | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | /url1   | dining in |
+| 78931             | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | /url2   | fastfood  |
 
 ### orders
 
 | order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       |
 | ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- |
-| 31151         | 7728c4vz43s927     | Nina Fisher    | 1            | 2021.11.05 | 27.20       |
-| 11239         | 77s4399qwr2927     | Anna Greta     | 2            | 2021.10.22 | 16.50       |
+| 31151         | 43956              | Nina Fisher    | 1            | 2021.11.05 | 27.20       |
+| 11239         | 78931              | Anna Greta     | 2            | 2021.10.22 | 16.50       |
 
 ### orders_products
 
 | order_id (pk) | product_id (pk) | amount | product_price |
 | ------------- | --------------- | ------ | ---------- |
-| 31151         | 3456789feh332   | 1      | 2.50       |
-| 11239         | ertz5678tzu45   | 3      | 4.20       |
+| 31151         | 11583           | 1      | 2.50       |
+| 11239         | 59832           | 3      | 4.20       |
 
 
 
