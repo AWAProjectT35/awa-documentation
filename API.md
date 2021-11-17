@@ -2,6 +2,7 @@
 
 - GET /public/restaurants
 - GET /public/restaurants/
+  - ?id={restaurantId}
   - ?name={restaurantName}
   - ?address={address}
   - ?type={type}
@@ -32,6 +33,8 @@
 
 #### Search for restaurants
 
+`GET /public/restaurants/?id={restaurantId}`
+
 `GET /public/restaurants/?name={restaurantName}`
 
 `GET /public/restaurants/?address={address}`
@@ -51,14 +54,14 @@
 > - Customer account
 > - Manager account
 
-> ```
-> {
->     username: "jaska_jokunen",
->     address: "Kuusitie 6",
->     manager: False,
->     password: "32lökfjaweoi"
-> }
-> ```
+```
+{
+    userName: "Jaska Jokunen",
+    address: "Kuusitie 6",
+    manager: False,
+    password: "32lökfjaweoi"
+}
+```
 
 `POST /public/users`
 
@@ -67,12 +70,12 @@
 > - Customer account
 > - Manager account
 
-> ```
-> {
->     username: "jaska_jokunen"
->     password: "32lökfjaweoi"
-> }
-> ```
+```
+{
+    userName: "Jaska Jokunen"
+    password: "32lökfjaweoi"
+}
+```
 
 `POST /public/users/login`
 
@@ -83,11 +86,11 @@
 
 #### Add products from a restaurant menu to shopping cart
 
-> ```
-> {
->     productId: 12345
-> }
-> ```
+```
+{
+    productId: 12345
+}
+```
 
 `POST /customer/cart/{productId}`
 
@@ -99,21 +102,21 @@
 
 #### Buy cart contents
 
-> - Select Delivery location
-> - Make payment with a fictional payment system
->   - **How to make sure customer has payed?**
+- Select Delivery location
+- Make payment with a fictional payment system
+  - **How to make sure customer has payed?**
 
-> ```
-> {
->     restaurantId: 007,
->     products:
->         [
->             12345,
->             23456,
->             34567
->         ]
-> }
-> ```
+```
+{
+    restaurantId: 007,
+    products:
+        [
+            12345,
+            23456,
+            34567
+        ]
+}
+```
 
 `POST /customer/cart/buy`
 
@@ -131,12 +134,12 @@
 
 #### Confirm delivered order
 
-> ```
-> {
->     orderId: 98765,
->     status: "Delivered"
-> }
-> ```
+```
+{
+    orderId: 98765,
+    status: 4
+}
+```
 
 `POST /customer/orders/confirm`
 
@@ -147,18 +150,16 @@
 
 #### Create a restaurant to the system with basic information
 
-> Restaurant info
->
-> ```
-> {
->     restaurantName: "Bandidos",
->     address: "Puistokatu 31",
->     operatingHours: "11:00 - 22:00",
->     image: "/path/to/image.png",
->     type: "Casual",
->     priceLevel: "€€"
-> }
-> ```
+```
+{
+    restaurantName: "Bandidos",
+    address: "Puistokatu 31",
+    operatingHours: "11:00 - 22:00",
+    image: "/path/to/image.png",
+    type: "Casual",
+    priceLevel: "€€"
+}
+```
 
 `POST /manager/restaurants`
 
@@ -166,15 +167,13 @@
 
 #### Create restaurants menu
 
-> List of product ids
->
-> ```
-> [
->     12345,
->     23456,
->     34567
-> ]
-> ```
+```
+[
+    12345,
+    23456,
+    34567
+]
+```
 
 `POST /manager/restaurants/{restaurantId}/menu`
 
@@ -182,19 +181,17 @@
 
 #### Create product to category
 
-> Product data
->
-> ```
-> {
->     name: "Garlic Bread",
->     description: "Lorem ipsum dolor sit amet",
->     price: 4,
->     image: ???
->     category: ["bread", "garlic"]
-> }
->
+```
+{
+    name: "Garlic Bread",
+    description: "Lorem ipsum dolor sit amet",
+    price: 4,
+    image: ???
+    category: ["bread", "garlic"]
+}
+```
+
 > if category doesn't exist backend creates it
-> ```
 
 `POST /manager/restaurants/{restaurantId}/product`
 
@@ -202,23 +199,23 @@
 
 #### Receive order
 
-> Shows orders that have `Received` status
+> Shows orders that have `0: Received` status
 
 `GET /manager/restaurants/{restaurantId}/ordres/new`
 
 #### Change order status with Estimated Time of Completion
 
-> ```
-> {
->     status: "Preparing"
-> }
-> ```
+```
+{
+    status: 1
+}
+```
 
-> - Received
-> - Preparing
-> - Ready for delivery
-> - Delivering
-> - Delivered
+> - 0: Received
+> - 1: Preparing
+> - 2: Ready for delivery
+> - 3: Delivering
+> - 4: Delivered
 
 `POST /manager/restaurants/{restaurantId}/orders/{orderId}`
 
