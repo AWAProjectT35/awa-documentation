@@ -12,10 +12,10 @@
 
 ### products
 
-| product_id (pk) | restaurant_name (fk) | name         | description | price | image | categories   |
-| --------------- | -------------------- | ------------ | ----------- | ----- | ----- | ------------ |
-| 3456789feh332   | Even Better Burgers  | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
-| ertz5678tzu45   | Best Burgers         | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
+| product_id (pk) | restaurant_id (fk) | name         | description | price | image | categories   |
+| --------------- | ------------------ | ------------ | ----------- | ----- | ----- | ------------ |
+| 3456789feh332   | 7728c4vz43s927     | Cheeseburger | very cheesy | 2.50  | /url1 | burgers      |
+| ertz5678tzu45   | 77s4399qwr2927     | Chicken King | chrispyyy   | 4.20  | /url2 | cheesy,cheap |
 
 ### restaurants 
 
