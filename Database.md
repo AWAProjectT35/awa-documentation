@@ -19,10 +19,10 @@
 
 ### restaurants 
 
-| restaurant_id(pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image   | type      |
-| ----------------- | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ------- | --------- |
-| 43956             | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | /url1   | dining in |
-| 78931             | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | /url2   | fastfood  |
+| restaurant_id (pk) | restaurant_name      | manager_name (fk) | address  | opens | closes | price_level | image   | type      |
+| ------------------ | -------------------- | ----------------- | -------  | ----- | ------ | ----------- | ------- | --------- |
+| 43956              | Even Better Burgers  | Mark Ambitious    | Oulu     | 9:00  | 22:00  | 2           | /url1   | dining in |
+| 78931              | Best Burgers         | Steven King       | Helsinki | 9:00  | 20:00  | 1           | /url2   | fastfood  |
 
 ### orders
 
@@ -52,7 +52,7 @@ create table users (
     password_hash VARCHAR(50) NOT NULL,
 );
 create table restaurants (
-    restaurant_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    restaurant_id INT NOT NULL PRIMARY KEY,
     restaurant_name VARCHAR(50) NOT NULL,
     manager_name VARCHAR(20) REFERENCES users (user_name),
     address VARCHAR(50) NOT NULL,
@@ -63,7 +63,7 @@ create table restaurants (
     image VARCHAR(100) NOT NULL,
 );
 create table products (
-    product_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    product_id INT NOT NULL PRIMARY KEY,
     restaurant_id VARCHAR(50) REFERENCES restaurant (restaurant_id),
     product_name VARCHAR(50) NOT NULL,
     description VARCHAR(150),
@@ -72,7 +72,7 @@ create table products (
     categories VARCHAR(100)
 );
 create table orders (
-    order_id VARCHAR(50) NOT NULL PRIMARY KEY,
+    order_id INT NOT NULL PRIMARY KEY,
     restaurant_id VARCHAR(50) REFERENCES restaurants (restaurant_id),
     user_name VARCHAR(20) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
@@ -80,8 +80,8 @@ create table orders (
     total NUMERIC NOT NULL
 );
 create table orders_products (
-    order_id VARCHAR(50) REFERENCES orders (order_id),
-    product_id VARCHAR(50) REFERENCES products (product_id),
+    order_id INT REFERENCES orders (order_id),
+    product_id INT REFERENCES products (product_id),
     amount SMALLINT NOT NULL,
     unit_price NUMERIC NOT NULL,
     PRIMARY KEY(order_id, product_id)
@@ -222,10 +222,23 @@ INSERT INTO orders_products VALUES (
     'order_id',
     'product_id',
     'amount',
-    'product_price'
-)
+    (SELECT price FROM products
+    WHERE product_id = 'product_id')
+);
 ```
 This will throw an error if `order_id` or `product_id` do not exist
+
+Next run this to set the price for the order. Skip this if you
+have already set the orders total in the first statement.
+```sql
+UPDATE orders 
+SET total = (
+    SELECT sum(amount * product_price) 
+    FROM orders_products
+    WHERE order_id = 'order_id'
+)
+WHERE order_id = 'order_id'
+```
 
 [Example](./sql/insert-order.sql)
 
