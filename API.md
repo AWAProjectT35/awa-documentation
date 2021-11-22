@@ -131,7 +131,7 @@
     operatingHours: "11:00 - 22:00",
     image: "/path/to/image.png",
     type: "Casual",
-    priceLevel: "€€"
+    priceLevel: 2
 }
 ```
 
