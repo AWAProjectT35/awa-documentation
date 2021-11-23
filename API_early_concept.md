@@ -1,5 +1,9 @@
 # API
 
+Out of Date.
+
+This is an early draft of API.
+
 ## Current Version
 
 [Stoplight API](https://awa-food-app.stoplight.io/docs/awa-food-app-api/YXBpOjI4OTEwMDQ1-awa-food-api)
