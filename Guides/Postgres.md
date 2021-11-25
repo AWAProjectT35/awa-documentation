@@ -7,6 +7,14 @@ Debian/Ubuntu
 
     sudo apt install postgresql postgresql-contrib
 
+Arch
+
+    sudo pacman -S postgresql
+    sudo -u postgres –i  initdb -D '/var/lib/postgres/data'
+    exit
+    sudo systemctl enable postgresql
+    sudo systemctl start postgresql
+
 ## Configure database awa project
 
 To connect to the database with the default user `postgres` run this:
