@@ -39,12 +39,25 @@
 | 11239         | 59832           | 3      | 4.20       |
 
 
+## Migrations 
+
+To setup and take down the database use the migration files. `migration-up.sql`
+will setup the database and insert some data in each table. `miration-down.sql` 
+drops all tables and sequences. The files are linked here:
+
+[Migration Up](./sql/migration-up.sql)
+
+[Migration Down](./sql/migration-down.sql)
 
 ## Database Operations and SQL 
 
 ### Setup
 
 ```sql
+create sequence restaurant_pk_seq;
+create sequence product_pk_seq;
+create sequence order_pk_seq;
+
 create table users (
     user_name VARCHAR(50) NOT NULL PRIMARY KEY,
     address VARCHAR(50) NOT NULL,
@@ -52,8 +65,8 @@ create table users (
     password_hash VARCHAR(50) NOT NULL,
 );
 create table restaurants (
-    restaurant_id INT NOT NULL PRIMARY KEY,
-    restaurant_name VARCHAR(50) NOT NULL,
+    restaurant_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('restaurant_pk_seq'),
+    restaurant_name VARCHAR(50) UNIQUE NOT NULL,
     manager_name VARCHAR(20) REFERENCES users (user_name),
     address VARCHAR(50) NOT NULL,
     opens VARCHAR(5) NOT NULL,
@@ -63,8 +76,8 @@ create table restaurants (
     image VARCHAR(100) NOT NULL,
 );
 create table products (
-    product_id INT NOT NULL PRIMARY KEY,
-    restaurant_id VARCHAR(50) REFERENCES restaurant (restaurant_id),
+    product_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('product_pk_seq'),
+    restaurant_id INT REFERENCES restaurants (restaurant_id),
     product_name VARCHAR(50) NOT NULL,
     description VARCHAR(150),
     price NUMERIC NOT NULL,
@@ -72,7 +85,7 @@ create table products (
     categories VARCHAR(100)
 );
 create table orders (
-    order_id INT NOT NULL PRIMARY KEY,
+    order_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('order_pk_seq'),
     restaurant_id INT REFERENCES restaurants (restaurant_id),
     user_name VARCHAR(20) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
@@ -166,8 +179,7 @@ INSERT INTO users values (
 ### Insert restaurant
 
 ```sql
-INSERT INTO restaurants VALUES (
-    'restaurant_id'
+INSERT INTO restaurants (restaurant_name, manager_name, address, opens, closes, price_level, type, image) VALUES (
     'restaurant_name',
     'manager_name',
     'address',
@@ -186,9 +198,9 @@ due to the `REFERENCES` constraint in the table definitions
 ### Insert product
 
 ```sql
-INSERT INTO products VALUES (
-    'product_id',
-    'restaurant_id',
+INSERT INTO products(restaurant_id, product_name, description, price, image, categories)
+VALUES (
+    (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
     'product_name',
     'description',
     'price',
@@ -202,6 +214,14 @@ due to the `REFERENCES` constraint in the table definitions
 [Example](./sql/insert-products.sql)
 
 ### Insert order
+
+Before inserting an order get an id form the database. The id will be needed 
+multiple times for inserting an order.
+
+```sql
+SELECT NEXTVAL('order_pk_seq');
+```
+use the returned value in place of `order_id`
 
 ```sql
 INSERT INTO orders VALUES (
