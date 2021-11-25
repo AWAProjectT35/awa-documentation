@@ -73,7 +73,7 @@ create table products (
 );
 create table orders (
     order_id INT NOT NULL PRIMARY KEY,
-    restaurant_id VARCHAR(50) REFERENCES restaurants (restaurant_id),
+    restaurant_id INT REFERENCES restaurants (restaurant_id),
     user_name VARCHAR(20) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
     order_date DATE NOT NULL,

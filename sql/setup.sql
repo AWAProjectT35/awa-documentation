@@ -18,7 +18,7 @@ create table restaurants (
 );
 create table products (
     product_id INT NOT NULL PRIMARY KEY,
-    restaurant_id VARCHAR(50) REFERENCES restaurants (restaurant_id),
+    restaurant_id INT REFERENCES restaurants (restaurant_id),
     product_name VARCHAR(50) NOT NULL,
     description VARCHAR(255),
     price NUMERIC NOT NULL,
