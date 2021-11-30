@@ -26,10 +26,10 @@
 
 ### orders
 
-| order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       |
-| ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- |
-| 31151         | 43956              | Nina Fisher    | 1            | 2021.11.05 | 27.20       |
-| 11239         | 78931              | Anna Greta     | 2            | 2021.10.22 | 16.50       |
+| order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       | delivery_address    |
+| ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- | ------------------- |
+| 31151         | 43956              | Nina Fisher    | 1            | 2021.11.05 | 27.20       | Tutkijantie 7, Oulu |
+| 11239         | 78931              | Anna Greta     | 2            | 2021.10.22 | 16.50       | Adlerweg 23, Zürich |
 
 ### orders_products
 
@@ -52,6 +52,8 @@ drops all tables and sequences. The files are linked here:
 ## Database Operations and SQL 
 
 ### Setup
+
+Do not use this to setup the database. Use the migrations above instead
 
 ```sql
 create sequence restaurant_pk_seq;
@@ -90,7 +92,8 @@ create table orders (
     user_name VARCHAR(20) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
     order_date DATE NOT NULL,
-    total NUMERIC NOT NULL
+    total NUMERIC NOT NULL,
+    delivery_address VARCHAR(255)
 );
 create table orders_products (
     order_id INT REFERENCES orders (order_id),
@@ -230,7 +233,9 @@ INSERT INTO orders VALUES (
     'user_name',
     'order_status',
     'date',
-    'total'
+    'total',
+    (SELECT address FROM users
+    WHERE user_name = 'user_name')
 );
 ```
 This will throw an error if `order_id`, `restaurant_id` or `user_name` 

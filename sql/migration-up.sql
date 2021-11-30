@@ -13,7 +13,7 @@ create table users (
 );
 create table restaurants (
     restaurant_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('restaurant_pk_seq'),
-    restaurant_name VARCHAR(50) NOT NULL,
+    restaurant_name VARCHAR(50) UNIQUE NOT NULL,
     manager_name VARCHAR(20) REFERENCES users (user_name),
     address VARCHAR(50) NOT NULL,
     opens VARCHAR(5) NOT NULL,
@@ -37,7 +37,8 @@ create table orders (
     user_name VARCHAR(50) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
     order_date DATE NOT NULL,
-    total NUMERIC NOT NULL
+    total NUMERIC NOT NULL,
+    delivery_address VARCHAR(255) Not NULL
 );
 create table orders_products (
     order_id INT REFERENCES orders (order_id),
@@ -103,13 +104,14 @@ VALUES (
 );
 
 
-INSERT INTO orders(restaurant_id, user_name, order_status, order_date, total)
+INSERT INTO orders(restaurant_id, user_name, order_status, order_date, total, delivery_address)
 VALUES (
     (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
     'moritz',
     1,
     current_date,
-    0.0
+    0.0,
+    (SELECT address from users where user_name = 'moritz')
 );
 -- insert all items for the order with 
 -- current price
