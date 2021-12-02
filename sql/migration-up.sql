@@ -7,15 +7,15 @@ create sequence order_pk_seq;
 -- Create tables
 create table users (
     user_name VARCHAR(50) NOT NULL PRIMARY KEY,
-    address VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
     manager BOOLEAN NOT NULL,
-    password_hash VARCHAR(50) NOT NULL
+    password_hash VARCHAR(255) NOT NULL
 );
 create table restaurants (
     restaurant_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('restaurant_pk_seq'),
     restaurant_name VARCHAR(50) UNIQUE NOT NULL,
-    manager_name VARCHAR(20) REFERENCES users (user_name),
-    address VARCHAR(50) NOT NULL,
+    manager_name VARCHAR(50) REFERENCES users (user_name),
+    address VARCHAR(255) NOT NULL,
     opens VARCHAR(5) NOT NULL,
     closes VARCHAR(5) NOT NULL,
     price_level SMALLINT NOT NULL,
