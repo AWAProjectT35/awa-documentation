@@ -64,7 +64,7 @@ create table users (
     user_name VARCHAR(50) NOT NULL PRIMARY KEY,
     address VARCHAR(50) NOT NULL,
     manager BOOLEAN NOT NULL,
-    password_hash VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
 );
 create table restaurants (
     restaurant_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('restaurant_pk_seq'),
@@ -89,7 +89,7 @@ create table products (
 create table orders (
     order_id INT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('order_pk_seq'),
     restaurant_id INT REFERENCES restaurants (restaurant_id),
-    user_name VARCHAR(20) REFERENCES users (user_name),
+    user_name VARCHAR(50) REFERENCES users (user_name),
     order_status SMALLINT NOT NULL,
     order_date DATE NOT NULL,
     total NUMERIC NOT NULL,

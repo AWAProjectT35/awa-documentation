@@ -37,8 +37,8 @@ SET total = (
     FROM orders_products
     WHERE order_id = 2222
 )
-WHERE order_id = 1;
+WHERE order_id = 2222;
 -- If the delivery address is not the users home address
 UPDATE orders 
 SET delivery_address = 'Adlerweg 12, Zürich' 
-WHERE order_id = 1;
+WHERE order_id = 2222;
