@@ -66,7 +66,7 @@ complete and working.
 Due to the kanban approach to development the applications 
 constantly change as the end result is never written in stone. 
 According to agile development changes to the specifications and 
-requirements are always acceptable when they implrove the overall 
+requirements are always acceptable when they improve the overall 
 product. Therefore specific test cases can only be written close 
 to the end of the project, in a phase where major changes are 
 less likely to be necessary. In earlier phases mostly white box 
