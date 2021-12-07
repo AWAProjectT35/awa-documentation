@@ -38,7 +38,8 @@ create table orders (
     order_status SMALLINT NOT NULL,
     order_date DATE NOT NULL,
     total NUMERIC NOT NULL,
-    delivery_address VARCHAR(255) Not NULL
+    delivery_address VARCHAR(255) NOT NULL
+    eta VARCHAR(25)
 );
 create table orders_products (
     order_id INT REFERENCES orders (order_id),
@@ -49,91 +50,96 @@ create table orders_products (
 );
 
 
--- insert some data
+-----------------------------------------------------------------------------------
+-- insering users directly via sql would not allow user login because the password
+-- gets hashed by the api and this cannot simply be replicated using sql only
+-----------------------------------------------------------------------------------
 
-insert into users values (
-    'lucas',
-    'Sargans',
-    TRUE,
-    'öawbfcjkh3öoi'
-);
-insert into users values (
-    'moritz',
-    'Zürich',
-    FALSE,
-    'öaih3bvii12m'
-);
+-- -- insert some data
 
-INSERT INTO restaurants (restaurant_name, manager_name, address, opens, closes, price_level, type, image) VALUES (
-    'best burgers',
-    'lucas',
-    'sargans',
-    '9:00',
-    '22:00',
-    2,
-    'fast food',
-    '/image/path'
-);
-INSERT INTO restaurants (restaurant_name, manager_name, address, opens, closes, price_level, type, image) VALUES (
-    'even better burgers',
-    'lucas',
-    'sargans',
-    '9:00',
-    '22:00',
-    1,
-    'street food',
-    '/image/path'
-);
-INSERT INTO products(restaurant_id, product_name, description, price, image, categories)
-VALUES (
-    (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
-    'Cheeseburger',
-    'some cheese burger',
-    2.50,
-    '/image/path',
-    'cheese, cheep'
-);
-INSERT INTO products(restaurant_id, product_name, description, price, image, categories)
-VALUES (
-    (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
-    'Haloumi Burger',
-    'some vegi burger',
-    3.50,
-    '/image/path',
-    'cheese, vegi'
-);
+-- insert into users values (
+--     'lucas',
+--     'Sargans',
+--     TRUE,
+--     'öawbfcjkh3öoi'
+-- );
+-- insert into users values (
+--     'moritz',
+--     'Zürich',
+--     FALSE,
+--     'öaih3bvii12m'
+-- );
+
+-- INSERT INTO restaurants (restaurant_name, manager_name, address, opens, closes, price_level, type, image) VALUES (
+--     'best burgers',
+--     'lucas',
+--     'sargans',
+--     '9:00',
+--     '22:00',
+--     2,
+--     'fast food',
+--     '/image/path'
+-- );
+-- INSERT INTO restaurants (restaurant_name, manager_name, address, opens, closes, price_level, type, image) VALUES (
+--     'even better burgers',
+--     'lucas',
+--     'sargans',
+--     '9:00',
+--     '22:00',
+--     1,
+--     'street food',
+--     '/image/path'
+-- );
+-- INSERT INTO products(restaurant_id, product_name, description, price, image, categories)
+-- VALUES (
+--     (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
+--     'Cheeseburger',
+--     'some cheese burger',
+--     2.50,
+--     '/image/path',
+--     'cheese, cheep'
+-- );
+-- INSERT INTO products(restaurant_id, product_name, description, price, image, categories)
+-- VALUES (
+--     (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
+--     'Haloumi Burger',
+--     'some vegi burger',
+--     3.50,
+--     '/image/path',
+--     'cheese, vegi'
+-- );
 
 
-INSERT INTO orders(restaurant_id, user_name, order_status, order_date, total, delivery_address)
-VALUES (
-    (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
-    'moritz',
-    1,
-    current_date,
-    0.0,
-    (SELECT address from users where user_name = 'moritz')
-);
--- insert all items for the order with 
--- current price
-INSERT INTO orders_products VALUES (
-    1,
-    1,
-    2,
-    (SELECT price FROM products
-    WHERE product_id = 1)
-);
-INSERT INTO orders_products VALUES (
-    1,
-    2,
-    3,
-    (SELECT price FROM products
-    WHERE product_id = 2)
-);
--- This will calculate and set the orders total
-UPDATE orders 
-SET total = (
-    SELECT sum(amount * product_price) 
-    FROM orders_products
-    WHERE order_id = 1
-)
-WHERE order_id = 1;
+-- INSERT INTO orders(restaurant_id, user_name, order_status, order_date, total, delivery_address)
+-- VALUES (
+--     (SELECT restaurant_id from restaurants WHERE restaurant_name = 'best burgers'),
+--     'moritz',
+--     1,
+--     current_date,
+--     0.0,
+--     (SELECT address from users where user_name = 'moritz')
+-- );
+-- -- insert all items for the order with 
+-- -- current price
+-- INSERT INTO orders_products VALUES (
+--     1,
+--     1,
+--     2,
+--     (SELECT price FROM products
+--     WHERE product_id = 1)
+-- );
+-- INSERT INTO orders_products VALUES (
+--     1,
+--     2,
+--     3,
+--     (SELECT price FROM products
+--     WHERE product_id = 2)
+-- );
+-- -- This will calculate and set the orders total
+-- UPDATE orders 
+-- SET total = (
+--     SELECT sum(amount * product_price) 
+--     FROM orders_products
+--     WHERE order_id = 1
+-- )
+-- WHERE order_id = 1;

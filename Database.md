@@ -26,10 +26,10 @@
 
 ### orders
 
-| order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       | delivery_address    |
-| ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- | ------------------- |
-| 31151         | 43956              | Nina Fisher    | 1            | 2021.11.05 | 27.20       | Tutkijantie 7, Oulu |
-| 11239         | 78931              | Anna Greta     | 2            | 2021.10.22 | 16.50       | Adlerweg 23, Zürich |
+| order_id (pk) | restaurant_id (fk) | user_name (fk) | order_status | order_date | total       | delivery_address    | eta    | 
+| ------------- | ------------------ | -------------- | ------------ | ---------- | ----------- | ------------------- | ------ |
+| 31151         | 43956              | Nina Fisher    | 1            | 2021.11.05 | 27.20       | Tutkijantie 7, Oulu | 19:30  |
+| 11239         | 78931              | Anna Greta     | 2            | 2021.10.22 | 16.50       | Adlerweg 23, Zürich | 12:25  |
 
 ### orders_products
 
