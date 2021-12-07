@@ -64,7 +64,7 @@ branch and is only merged into the main branch when it is
 complete and working. 
 
 Due to the kanban approach to development the applications 
-constantly change as the endresult is never written in stone. 
+constantly change as the end result is never written in stone. 
 According to agile development changes to the specifications and 
 requirements are always acceptable when they implrove the overall 
 product. Therefore specific test cases can only be written close 
