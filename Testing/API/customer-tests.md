@@ -10,10 +10,9 @@
 **Test designed date:** 7.12.2021
 
 
-| #    | Executed date | Executed by | result          | Github issue  |
+| #    | Executed date | Executed by | result          | Github bug    |
 | ---- | ------------- | ----------- | --------------- | ------------- |
 |    1 | 8.12.2021     | Lucas Aebi  | success         |               |
-|    2 | \<Date>       | \<Name>     | \<fail/success> | \<Issue link> |
 
 
 ## Preconditions / Test setup

@@ -9,7 +9,7 @@
 **Test designed date:** \<Date>
 
 
-| #    | Executed date | Executed by | result          | Github issue  |
+| #    | Executed date | Executed by | result          | Github bug    |
 | ---- | ------------- | ----------- | --------------- | ------------- |
 |    1 | \<Date>       | \<Name>     | \<fail/success> | \<Issue link> |
 |    2 | \<Date>       | \<Name>     | \<fail/success> | \<Issue link> |
