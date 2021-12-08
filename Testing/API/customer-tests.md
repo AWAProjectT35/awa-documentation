@@ -107,7 +107,7 @@ this should return something like this:
 
 **Step 3**
 
-Call `GET /customer/orders` with Bearer Authentication with the token received from Step 2 and this body:
+Call `POST /customer/buy` with Bearer Authentication with the token received from Step 2 and this body:
 
 ```json
 {
@@ -123,7 +123,7 @@ this should return a status code `200` and the text "order placed".
 
 **Step 4**
 
-Call `GET /customer/orders` with Bearer Authentication with the token received from Step 2 and this body:
+Call `POST /customer/buy` with Bearer Authentication with the token received from Step 2 and this body:
 
 ```json
 {
@@ -171,7 +171,7 @@ response of course):
 
 **Step 6**
 
-Call `GET /customer/orders` with Bearer Authentication with the token received from Step 2 and this body:
+Call `POST /customer/buy` with Bearer Authentication with the token received from Step 2 and this body:
 
 ```json
 {

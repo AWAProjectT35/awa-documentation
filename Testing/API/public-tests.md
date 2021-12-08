@@ -105,31 +105,32 @@ Call `GET /public/restaurants`. This should return:
 ]
 ```
 
-**Step 2**
+**Step 2** 
+_not in use anymore since 8.12.2021_
 
-Call `GET /public/restaurants` with the following queriy parameters:
-
-- address: Addresse A
-- restaurantName: Restaurant A
-- price: 3
-- type: Categoie A
-
-this should return:
-
-```json
-[
-  {
-    "restaurantId": 1111,
-    "restaurantName": "Restaurant A",
-    "managerName": "Marie Grünenfelder",
-    "address": "Addresse 1",
-    "opens": "8:00",
-    "closes": "22:00",
-    "image": "/url",
-    "type": "Categorie A",
-    "priceLevel": 3
-  }
-]
+> Call `GET /public/restaurants` with the following queriy parameters:
+> 
+> - address: Addresse A
+> - restaurantName: Restaurant A
+> - price: 3
+> - type: Categoie A
+> 
+> this should return:
+> 
+> ```json
+> [
+>   {
+>     "restaurantId": 1111,
+>     "restaurantName": "Restaurant A",
+>     "managerName": "Marie Grünenfelder",
+>     "address": "Addresse 1",
+>     "opens": "8:00",
+>     "closes": "22:00",
+>     "image": "/url",
+>     "type": "Categorie A",
+>     "priceLevel": 3
+>   }
+> ]
 ```
 
 **Step 3**
