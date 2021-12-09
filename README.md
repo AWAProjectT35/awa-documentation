@@ -1,6 +1,6 @@
 # awa-documentation
 
-## [API](API_early_concept.md)
+## [API](https://awa-food-app.stoplight.io/docs/awa-food-app-api/YXBpOjI4OTEwMDQ1-awa-food-api)
 
 Contains plan for the backend API
 
@@ -16,4 +16,4 @@ Database tables and SQL statements/queries
 
 This document describes what kind of tests where done 
 and how the testing process was documented. The test
-cases and test results can be found [here](./testing)
+cases and test results can be found [here](https://github.com/AWAProjectT35/awa-documentation/tree/main/Testing)
