@@ -9,18 +9,17 @@
 **Test designed date:** 7.12.2021
 
 
-| #    | Executed date | Executed by | result          | Github Bug    |
-| ---- | ------------- | ----------- | --------------- | ------------- |
-|    1 | 8.12.2021     | Lucas Aebi  | success         |               |
+| #    | Executed date | Executed by | result          | Level  | Github Bug    |
+| ---- | ------------- | ----------- | --------------- | ------ | ------------- |
+|    1 | 8.12.2021     | Lucas Aebi  | success         | local  | -             |
+
+> Report bugs on Github by creating an issue with the label `Bug` and paste 
+> a link to the bug report in the table above
 
 
 ## Preconditions / Test setup
 
-Run these statements on empty database or create the entries manually:
-
-```sql
-
-```
+Make sure the database is empty and the tables are setup correctly.
 
 ## Testing steps
 
