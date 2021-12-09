@@ -15,24 +15,28 @@
 
 ## Introduction
 
+This project follows agile development using the Kanban method. Formal testing
+is kept to a minimum and only release ready software undergoes a proper testing 
+process.
+
 
 ### Scope
 
 The scope of this tests includes all features described in the 
-project work instructions [here](https://oamk-my.sharepoint.com/:w:/g/personal/lassehav_oamk_fi/EZEZElaOJsdDkgulKQ4LpF0BfTW-yByp0SdzUKZ1mclqPQ?e=Z48Pnc).
+project work instructions [here](https://oamk-my.sharepoint.com/:w:/g/personal/lassehav_oamk_fi/EZEZElaOJsdDkgulKQ4LpF0BfTW-yByp0SdzUKZ1mclqPQ?e=Z48Pnc). 
 
 ### Out of scope
 
 Not part of this test plan is ensuring interoperability of the 
 backend api with other frontend applications than the one developed 
-as part of this project.
+as part of this project. Not all possible edge cases are to be tested.
 
 ### Quality Objective
 
-- Ensure the Application Under Test conforms to functional and 
-non-functional requirements 
+- Ensure the Application Under Test conforms to functional requirements 
 - Only functional code gets deployed to heroku
-- The application does not crash under any circumstances
+- The application does not crash under any circumstances, internal server 
+errors for example do not count as crash if the server keeps running.
 
 ### Roles and Responsibilities
 
@@ -61,7 +65,9 @@ New features or changes to the application are defined as an
 issue on github and are developed under the responsibility of 
 one person. Ideally each issue is developed in its own git 
 branch and is only merged into the main branch when it is 
-complete and working. 
+complete and working. Testing is done continuously without 
+documentation and the project or parts of it only undergo 
+a proper testing process when a release ready state is reached.
 
 Due to the kanban approach to development the applications 
 constantly change as the endresult is never written in stone. 
@@ -83,25 +89,32 @@ The following levels/tests exist for this project:
 
 white box tests are done by reviewing the changes someone made to the code 
 and giving feedback. This happens on github when a merge request adds many 
-changes or causes issues and the author wishes a review by someone else 
-before merging the changes into the main product.
+changes or causes potential issues and the author wishes a review by someone else 
+before merging the changes into the main product. These test are not 
+documented, however if the test was successfull the tester can approve to 
+the changes on github. In case there are still issues in the proposed 
+changes, the tester leaves a comment under the pull request on github and 
+does not approve the changes.
 
 Local testing means testing the application under test running on the 
 testers computer. All parts of the application, frontend, backend and 
-database are running localy. 
+database are running localy. These tests follow a test case and the 
+result is documented in the test case document itself.
 
 Online testing means testing the application in its deployed state running 
-on Heroku, including frontend, backend and database.
+on Heroku, including frontend, backend and database. Otherwise all procedings 
+are the same as with local testing.
 
 ### Bug Triage
 
 When a bug is found while following a test case it must be reported on github
 as an issue with the label `Bug`. The author of the code that caused the bug 
-must be assigned to the issue. Only when the bug is fixxed can the test continue.
+must be assigned to the issue. Only when the bug is fixxed can the test be 
+run again.
 
 ## Test Deliverables 
 
 1. Test Plan - this document
 2. Test Cases including test results and date of testing
-3. Bug Reports on GitHub
-4. Comments on merge requests on Github
+3. Bug Reports on GitHub as Issue with the `Bug` label.
+4. Comments on pull requests on Github
