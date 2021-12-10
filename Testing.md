@@ -76,7 +76,9 @@ requirements are always acceptable when they improve the overall
 product. Therefore specific test cases can only be written close 
 to the end of the project, in a phase where major changes are 
 less likely to be necessary. In earlier phases mostly white box 
-testing is used to approve to changes.
+testing is used to approve to changes. 
+
+Bugs can be filed anytime, not only during testing.
 
 
 ### Test levels
@@ -108,13 +110,17 @@ are the same as with local testing.
 ### Bug Triage
 
 When a bug is found while following a test case it must be reported on github
-as an issue with the label `Bug`. The author of the code that caused the bug 
+as an issue with the label `Bug`, and leave a bug report in a shared folder. 
+The author of the code that caused the bug 
 must be assigned to the issue. Only when the bug is fixxed can the test be 
 run again.
+
+The shared folder for bug reports and a template can be found [here](https://oamk-my.sharepoint.com/personal/t1liva02_students_oamk_fi/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Ft1liva02%5Fstudents%5Foamk%5Ffi%2FDocuments%2FAWA&ct=1639065069623&or=OWA%2DNT&cid=592c160c%2D5209%2D542b%2Dfc28%2Dbf6e1a5b6afe).
 
 ## Test Deliverables 
 
 1. Test Plan - this document
 2. Test Cases including test results and date of testing
-3. Bug Reports on GitHub as Issue with the `Bug` label.
-4. Comments on pull requests on Github
+3. Bug Reports on GitHub as Issue with the `Bug` label
+4. Bug Reports in shared folder 
+5. Comments on pull requests on Github
