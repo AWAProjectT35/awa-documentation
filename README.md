@@ -1,5 +1,13 @@
 # awa-documentation
 
+## Deployments
+
+All parts of the application are running on heroku:
+
+[Backend API](https://awa-2021-t35.herokuapp.com/)
+
+[Frontend Webapplicatoin](https://awa-2021-t35-frontend.herokuapp.com)
+
 ## [API](https://awa-food-app.stoplight.io/docs/awa-food-app-api/YXBpOjI4OTEwMDQ1-awa-food-api)
 
 Stoplight API documentation following the openAPI standard
